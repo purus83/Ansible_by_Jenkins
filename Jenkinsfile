@@ -7,14 +7,14 @@ pipeline{
 	}
 
 	stages{
-		stage('Maven build'){
+		stage('Ansible PlayBook - Maven build'){
 			steps{
 				ansiColor('xterm') {
 					ansiblePlaybook(inventory: 'inventory.ini', playbook: 'build_playbook.yaml',colorized: true)
 				}
 			}
 		}
-		stage('WAR File copy to Tomcat server'){
+		stage('Ansible PlayBook - WAR File copy to Tomcat server'){
 			steps{
 				ansiColor('xterm') {
 					ansiblePlaybook(inventory: 'inventory.ini', playbook: 'copy_war_tomcat_playbook.yaml',colorized: true)
