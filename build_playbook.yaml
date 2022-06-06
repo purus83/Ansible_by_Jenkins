@@ -15,10 +15,10 @@
              - test
              - package
              - verify
-      register: output
+      #register: output
 
 
 
-    - name: Print the Result of Maven Build
-      debug:
-             var: output
+    #- name: Print the Result of Maven Build
+      #debug:
+             #var: output
