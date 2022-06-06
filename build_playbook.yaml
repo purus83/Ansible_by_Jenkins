@@ -6,7 +6,7 @@
   tasks:
     - name: Task to Running MAVEN Build
       shell: 
-             cd trucks; mvn -T 4 '{{ item }}'
+             cd "{{ playbook_dir }}/trucks"; mvn -T 4 '{{ item }}'
        
 
       loop: 
