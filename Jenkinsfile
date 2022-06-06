@@ -14,5 +14,12 @@ pipeline{
 				}
 			}
 		}
+		stage('WAR File copy to Tomcat server'){
+			steps{
+				ansiColor('xterm') {
+					ansiblePlaybook(inventory: 'inventory.ini', playbook: 'copy_war_tomcat_playbook.yaml',colorized: true)
+				}
+			}
+		}
 	}
 }
