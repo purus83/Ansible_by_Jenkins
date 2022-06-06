@@ -1,0 +1,28 @@
+---
+- name: Play to Deploy WAR file to Tomcat server
+  hosts: TomcatServers
+  connection: local
+  gather_facts: false
+  become: yes
+  tasks:
+    - name: To check for Apache Tomcat9 and install if not present
+      apt:
+              name: tomcat9
+              state: present
+
+
+    - name: To copy .war file to Apache Tomcat9
+      copy:
+        src: "{{ playbook_dir }}/trucks/target/trucks.war"
+        dest: /var/lib/tomcat9/webapps  
+        owner: tomcat
+        group: tomcat
+        mode: 0644
+        force: yes
+
+    - name: To check for Apache Tomcat9 Service and start if not Running 
+      systemd:
+              name: tomcat9
+              state: started
+              enabled: yes
+              daemon_reload: true
