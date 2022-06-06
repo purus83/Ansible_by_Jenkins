@@ -1,7 +1,7 @@
 ---
 - name: Play to Run MAven Build
   hosts: Build_Hosts 
-  connection: local
+  #connection: local
   gather_facts: false
   tasks:
     - name: Task to Running MAVEN Build
